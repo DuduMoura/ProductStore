@@ -17,8 +17,28 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard.index');
+    })->name('admin.dashboard.index');
+
+    Route::prefix('products')->group(function () {
+        Route::get('', function ($id) {
+            
+        })->name('admin.products.index');
+    });
+
+    Route::prefix('shops')->group(function () {
+        Route::get('', function ($id) {
+            
+        })->name('admin.shops.index');
+    });
+
+    Route::prefix('users')->group(function () {
+        Route::get('', function ($id) {
+            
+        })->name('admin.users.index');
+    });
+});
 
 require __DIR__.'/auth.php';
