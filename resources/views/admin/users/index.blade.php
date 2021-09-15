@@ -1,8 +1,8 @@
-@section('name-page', 'Tela principal')
+@section('name-page', 'Usuários')
 @extends('components.body')
 
 @section('content')
     <div class="p-6 bg-white border-b border-gray-200">
-        Bem-vindo ao sistema Loja - Navegue nos menus acima para acessar o que deseja.
+        <a href="" class="btn btn-info">Criar Usuário</a>
     </div>
 @endsection
