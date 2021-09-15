@@ -10,4 +10,6 @@ class Shop extends Model
     use HasFactory;
 
     protected $table = 'shops';
+
+    protected $fillable = ['name', 'address'];
 }
