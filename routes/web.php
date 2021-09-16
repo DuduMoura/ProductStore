@@ -14,6 +14,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('products')->group(function () {
         Route::get('', [ProductController::class, 'index'])->name('admin.products.index');
+        Route::post('', [ProductController::class, 'store'])->name('admin.products.store');
+        Route::get('edit/{product}', [ProductController::class, 'edit'])->name('admin.products.edit');
+        Route::put('edit/{product}', [ProductController::class, 'update'])->name('admin.products.update');
+        Route::get('create', [ProductController::class, 'create'])->name('admin.products.create');
+        Route::delete('{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
     });
 
     Route::prefix('shops')->group(function () {
