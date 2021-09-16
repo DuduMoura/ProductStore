@@ -15,9 +15,12 @@ Rode os seguintes comandos para iniciar o projeto
 - npm install
 - npm run dev
 
-Cria o arquivo .env com os mesmos dados do .env.example, apenas configurando sua base de dados
+Cria o arquivo .env com os mesmos dados do .env.example, apenas configurando sua base de dados em 'DB_DATABASE'
 Caso não tenha a base de dados 'store' criada, realize a criação da mesma antes de rodar o comando abaixo.
 - php artisan migrate
+
+Gerar chave key para acesso
+- php artisan key:generate
 
 Agora vamos inicializar o servidor com o seguinte comando
 - php artisan serve
