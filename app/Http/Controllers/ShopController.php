@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shop;
+use App\Models\User;
+use App\Models\Product;
 use App\Http\Requests\ShopRequest;
-use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
@@ -49,6 +50,18 @@ class ShopController extends Controller
     }
 
     public function destroy(Shop $shop) {
+        if (User::firstWhere('shops_id', $shop->id)) {
+            return redirect()
+            ->route('admin.shops.index')
+            ->with('message', 'Registro não pode ser deletado! Possui vinculo com 1 ou mais usuários');
+        }
+
+        if (Product::firstWhere('shops_id', $shop->id)) {
+            return redirect()
+            ->route('admin.shops.index')
+            ->with('message', 'Registro não pode ser deletado! Possui vinculo com 1 ou mais produtos');
+        }
+
         $shop->delete();
 
         return redirect()
