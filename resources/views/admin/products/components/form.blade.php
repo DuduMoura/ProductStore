@@ -44,5 +44,6 @@
         price = price.replace(/(\d)(\d{3}),/g, "$1$2.");
 
         element.value = price;
+        if(price == 'NaN' || price == '0.00') element.value = ''
     }
 </script>
